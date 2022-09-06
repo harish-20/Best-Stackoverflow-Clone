@@ -51,7 +51,7 @@ const QuestionDetails = () => {
   }
 
   const handleShare = () => {
-    const url = 'http://localhost:8080/'
+    const url = 'https://stackoverflow-clone-harish.netlify.app/'
     const fullurl = url + location.pathname
     copy(fullurl)
     alert('url copied')
@@ -133,7 +133,7 @@ const QuestionDetails = () => {
                         </div>
                         <div style={{ display: 'flex' }}>
                           <Link
-                            to={`/User/${question.userPosted}`}
+                            to={`/Users/${question.userId}`}
                             className="user-link"
                             style={{ color: '#0086d8', textDecoration: 'none' }}
                           >

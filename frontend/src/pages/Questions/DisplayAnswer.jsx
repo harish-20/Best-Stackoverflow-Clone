@@ -25,8 +25,7 @@ const DisplayAnswer = ({ question, handleShare }) => {
               <button type="" onClick={handleShare}>
                 Share
               </button>
-
-              {user.result.name === ans.userAnswered && (
+              {user.result._id === ans.userId && (
                 <button
                   type=""
                   onClick={(e) => handleDelete(ans._id, question.noOfAnswers)}
@@ -38,7 +37,7 @@ const DisplayAnswer = ({ question, handleShare }) => {
             <div className="">
               <p>answered {moment(ans.answeredOn).fromNow()}</p>
               <Link
-                to={`/Users/${ans._id}`}
+                to={`/Users/${ans.userId}`}
                 className="user-link"
                 style={{ color: '#0086d8' }}
               >

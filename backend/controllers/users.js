@@ -6,8 +6,8 @@ export const getAllUsers = async (req, res) => {
     const usersFullDetails = await User.find({})
 
     const usersDetails = usersFullDetails.map((user) => {
-      const { _id, name, email, tags, joinedOn, about } = user
-      return { _id, name, email, tags, joinedOn, about }
+      const { _id, name, email, tags, joinedOn, about, location } = user
+      return { _id, name, email, tags, joinedOn, about, location }
     })
 
     res.status(200).json(usersDetails)
@@ -22,7 +22,7 @@ export const getAllUsers = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
   const { id: _id } = req.params
-  const { name, about, tags } = req.body
+  const { name, about, tags, location } = req.body
 
   try {
     if (!mongoose.Types.ObjectId.isValid(_id)) {
@@ -33,7 +33,7 @@ export const updateProfile = async (req, res) => {
     const updatedProfile = await User.findByIdAndUpdate(
       _id,
       {
-        $set: { name, about, tags },
+        $set: { name, about, tags, location },
       },
       { new: true },
     )

@@ -21,10 +21,11 @@ const AllRoutes = () => {
       <Route path="/auth" element={<Auth />} />
 
       <Route path="/Questions" element={<Questions />} />
-      <Route path="/AskQuestion" element={<AskQuestion />} />
       <Route path="/Questions/:id" element={<DisplayQuestion />} />
+      <Route path="/AskQuestion" element={<AskQuestion />} />
 
       <Route path="/Tags" element={<Tags />} />
+
       <Route path="/Users" element={<Users />} />
       <Route path="/Users/:id" element={<UserProfile />} />
     </Routes>

@@ -19,6 +19,7 @@ export const login = (authData, navigate) => async (dispatch) => {
     dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
     navigate('/')
   } catch (error) {
+    alert('invalid username and password')
     console.log(error)
   }
 }

@@ -76,3 +76,17 @@
   border: none;
   cursor: pointer;
 }
+
+.user-getlocation-btn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #0a95ff;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  transition: 0.2s;
+}
+.user-getlocation-btn:hover {
+  background-color: #0074cc;
+  cursor: pointer;
+}

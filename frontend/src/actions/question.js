@@ -31,7 +31,7 @@ export const deleteQuestion = (id, navigate) => async (dispatch) => {
 
 export const voteQuestion = (id, value, userId) => async (dispatch) => {
   try {
-    const { data } = await api.voteQuestion(id, value, userId)
+    await api.voteQuestion(id, value, userId)
     dispatch(fetchAllQuestions())
   } catch (error) {
     console.log(error)
@@ -39,13 +39,14 @@ export const voteQuestion = (id, value, userId) => async (dispatch) => {
 }
 
 export const postAnswer = (answerData) => async (dispatch) => {
-  const { id, noOfAnswers, answerBody, userAnswered } = answerData
+  const { id, noOfAnswers, answerBody, userAnswered, userId } = answerData
   try {
     const { data } = await api.postAnswer(
       id,
       noOfAnswers,
       answerBody,
       userAnswered,
+      userId,
     )
     dispatch({ type: 'POST_ANSWER', payload: data })
     dispatch(fetchAllQuestions())

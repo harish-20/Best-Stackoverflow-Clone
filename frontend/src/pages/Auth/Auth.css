@@ -84,3 +84,10 @@
   color: #007ac6;
   cursor: pointer;
 }
+
+.input-element {
+  padding: 10px;
+  width: calc(100% - 30px);
+  border: solid 1px #0000003e;
+  border-radius: 3px;
+}

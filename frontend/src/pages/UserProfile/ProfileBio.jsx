@@ -23,6 +23,12 @@ const ProfileBio = ({ currentProfile }) => {
           <p>No bio found</p>
         )}
       </div>
+      {currentProfile?.location && (
+        <div>
+          <h4>Location</h4>
+          <p>{currentProfile?.location}</p>
+        </div>
+      )}
     </div>
   )
 }

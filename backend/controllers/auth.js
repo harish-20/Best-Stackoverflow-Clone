@@ -5,14 +5,14 @@ import 'dotenv/config'
 import { User } from '../models/auth.js'
 
 export const signup = async (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password, phoneNumber } = req.body
   try {
     const existingUser = await User.findOne({ email })
     if (existingUser !== null) {
       res.status(404).json({ message: 'Email already exists...' })
     } else {
       const hashedPassword = await bcrypt.hash(password, 12)
-      const user = { name, email, password: hashedPassword }
+      const user = { name, email, password: hashedPassword, phoneNumber }
 
       const newUser = await User.create(user)
       const token = jwt.sign(

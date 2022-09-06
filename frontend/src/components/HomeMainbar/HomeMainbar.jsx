@@ -20,7 +20,7 @@ const HomeMainbar = () => {
   }, [dispatch])
 
   // state variables
-  const user = 'harish'
+  const user = useSelector((state) => state.currentUserReducer)
   const questionList = useSelector((state) => state.questionReducer)
 
   //state functions

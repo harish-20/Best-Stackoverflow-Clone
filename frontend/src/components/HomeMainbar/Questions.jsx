@@ -1,7 +1,12 @@
 import moment from 'moment'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Questions = ({ question }) => {
+  const currentUser = useSelector((state) => state.currentUserReducer)
+  const alertToLogin = () => {
+    if (!currentUser) alert('login to see answers')
+  }
   return (
     <div className="display-question-container">
       <div className="display-votes-ans">
@@ -15,7 +20,8 @@ const Questions = ({ question }) => {
       <div className="display-question-details">
         <Link
           className="display-question-links"
-          to={`/Questions/${question._id}`}
+          to={currentUser === null ? `/Auth` : `/Questions/${question._id}`}
+          onClick={alertToLogin}
         >
           {question.questionTitle}
         </Link>

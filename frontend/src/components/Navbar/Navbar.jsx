@@ -69,7 +69,7 @@ const Navbar = () => {
           <>
             <Link
               style={{ color: 'white', textDecoration: 'none' }}
-              to={`/Users/${user.result._id}`}
+              to={`/Users/${user.result?._id}`}
             >
               <Avatar
                 color={'white'}
@@ -78,7 +78,7 @@ const Navbar = () => {
                 py="7px"
                 borderRadius="50%"
               >
-                {user?.result.name.toUpperCase().charAt(0)}
+                {user?.result?.name.toUpperCase().charAt(0)}
               </Avatar>
             </Link>
 

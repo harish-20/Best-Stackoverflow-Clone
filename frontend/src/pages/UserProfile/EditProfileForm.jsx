@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 
@@ -7,8 +8,30 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
   const [name, setName] = useState(currentUser?.result.name)
   const [about, setAbout] = useState(currentUser?.result.about)
   const [tags, setTags] = useState('')
+  const [location, setLocation] = useState('')
 
   const dispatch = useDispatch()
+
+  const getCity = async (latitude, longitude) => {
+    const apiEndPoint = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude.toFixed(
+      4,
+    )}&lon=${longitude.toFixed(
+      4,
+    )}&limit=5&appid=44e0a0f6d8be0aef3ca2739a9e1cac17`
+    axios
+      .get(apiEndPoint)
+      .then((res) => res.data)
+      .then((data) => {
+        setLocation(data[0].name + ',' + data[0].state)
+      })
+  }
+
+  const getCoordinates = () => {
+    navigator.geolocation.getCurrentPosition((location) => {
+      const coordinates = location.coords
+      getCity(coordinates.latitude, coordinates.longitude)
+    })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -20,11 +43,14 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
         updateProfile(id, {
           name,
           about,
+          location,
           tags: currentUser?.result?.tags,
         }),
       )
     } else {
-      dispatch(updateProfile(id, { name, about, tags: tags.split(' ') }))
+      dispatch(
+        updateProfile(id, { name, about, location, tags: tags.split(' ') }),
+      )
     }
     setSwitch(false)
   }
@@ -62,6 +88,19 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
           />
         </label>
         <br />
+        <label htmlFor="location">
+          <h3>Location</h3>
+          <input
+            id="location"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+          <span className="user-getlocation-btn" onClick={getCoordinates}>
+            getLocation
+          </span>
+        </label>
+        <br />
+
         <input type="submit" value="Save profile" className="user-submit-btn" />
 
         <button
