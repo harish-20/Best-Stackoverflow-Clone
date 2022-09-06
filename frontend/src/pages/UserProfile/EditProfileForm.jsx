@@ -17,7 +17,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
       4,
     )}&lon=${longitude.toFixed(
       4,
-    )}&limit=5&appid=44e0a0f6d8be0aef3ca2739a9e1cac17`
+    )}&limit=5&appid={apiid}`
     axios
       .get(apiEndPoint)
       .then((res) => res.data)
