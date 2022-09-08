@@ -1,41 +1,47 @@
 import ChatBot from 'react-simple-chatbot'
-
-import chatBotIcon from '../../assets/chatbot-icon.png'
+import { answerQueryOptions, answerQueryResponse } from './answerQuery'
+import {
+  authenticationQueryOptions,
+  authenticationQueryResponse,
+} from './authenticationQuery'
 
 import './ChatBot.css'
-import { useState } from 'react'
+import { otherQueryOptions, otherQueryResponse } from './otherQuery'
+import { questionQueryOptions, questionQueryResponse } from './questionQuery'
+import {
+  anyOtherQuery,
+  askQuery,
+  greetUser,
+  queryType,
+  responseAskQuery,
+} from './userQuery'
 
 const UserChatBot = () => {
-  const [isChatBotOn, setIsChatBotOn] = useState(false)
-
-  const showChatbot = () => {
-    setIsChatBotOn((state) => !state)
+  const config = {
+    width: '400px',
+    height: '500px',
+    floating: true,
   }
 
   const steps = [
-    {
-      id: '1',
-      message: 'What is your name?',
-      trigger: '2',
-    },
-    {
-      id: '2',
-      user: true,
-      trigger: '3',
-    },
-    {
-      id: '3',
-      message: 'Hi {previousValue}, nice to meet you!',
-      end: true,
-    },
+    ...greetUser,
+    ...askQuery,
+    ...responseAskQuery,
+    ...queryType,
+    ...anyOtherQuery,
+    ...authenticationQueryOptions,
+    ...authenticationQueryResponse,
+    ...questionQueryOptions,
+    ...questionQueryResponse,
+    ...answerQueryOptions,
+    ...answerQueryResponse,
+    ...otherQueryOptions,
+    ...otherQueryResponse,
   ]
-
+  console.log(steps)
   return (
-    <div className={isChatBotOn ? 'wrapper' : 'hidden'} onClick={showChatbot}>
-      <div className="chatbot">
-        {isChatBotOn && <ChatBot steps={steps} />}
-        <img src={chatBotIcon} alt="chatbot icon" />
-      </div>
+    <div className="chatbot">
+      <ChatBot steps={steps} {...config} />
     </div>
   )
 }
