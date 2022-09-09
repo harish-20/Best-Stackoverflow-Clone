@@ -30,8 +30,7 @@ const Auth = () => {
 
   const submitOtp = async () => {
     const trimedNumber = phoneNumber.split(' ').join('')
-    const { data } = await verifyOtp(trimedNumber, otp)
-    const { isVerified } = data
+    const { data: isVerified } = await verifyOtp(trimedNumber, otp)
 
     if (isVerified) {
       alert('phone number verified')
@@ -46,6 +45,7 @@ const Auth = () => {
     setIsPhoneNumberEntered(true)
     await sendOtp(trimedNumber)
   }
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -73,6 +73,7 @@ const Auth = () => {
   const handleSwitch = () => {
     setIsSignUp(!isSignup)
   }
+
   return (
     <section className="auth-section">
       {isSignup && <AboutAuth />}

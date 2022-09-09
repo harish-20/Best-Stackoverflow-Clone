@@ -38,10 +38,10 @@ const UserChatBot = () => {
     ...otherQueryOptions,
     ...otherQueryResponse,
   ]
-  console.log(steps)
+
   return (
     <div className="chatbot">
-      <ChatBot steps={steps} {...config} />
+      <ChatBot headerTitle="Helper Bot" steps={steps} {...config} />
     </div>
   )
 }
