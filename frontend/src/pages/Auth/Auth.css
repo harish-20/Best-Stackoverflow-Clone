@@ -6,6 +6,7 @@
 .auth-section {
   min-height: 100vh;
   margin: 0 auto;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +14,7 @@
 }
 
 .auth-container-1 {
+  margin-top: -100px;
   padding: 20px;
   margin-right: 30px;
 }
@@ -61,6 +63,7 @@
 }
 
 .auth-btn {
+  text-align: center;
   margin-top: 10px;
   padding: 10px 5px;
   color: white;

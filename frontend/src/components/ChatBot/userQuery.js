@@ -42,13 +42,23 @@ export const askQuery = [
 export const responseAskQuery = [
   {
     id: 'no response',
-    message: 'Thank you have a nice day!',
-    end: true,
+    message: 'Thank you have a nice day! anyother queries let me know.',
+    trigger: 'another query',
   },
   {
     id: 'yes response',
     message: 'choose what is your query about...',
     trigger: 'query type',
+  },
+  {
+    id: 'another query',
+    options: [
+      {
+        value: 'yes',
+        label: 'yes',
+        trigger: 'yes response',
+      },
+    ],
   },
 ]
 

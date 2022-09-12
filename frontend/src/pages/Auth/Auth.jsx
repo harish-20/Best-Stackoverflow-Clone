@@ -32,7 +32,7 @@ const Auth = () => {
     const trimedNumber = phoneNumber.split(' ').join('')
     const { data: isVerified } = await verifyOtp(trimedNumber, otp)
 
-    if (isVerified) {
+    if (isVerified === true) {
       alert('phone number verified')
       setPhoneVerified(true)
     } else {
@@ -108,7 +108,7 @@ const Auth = () => {
                 />
               </label>
               <span className="auth-btn" onClick={getOtp}>
-                Send otp
+                send otp
               </span>
               {isPhoneNumberEntered && (
                 <>
@@ -125,14 +125,14 @@ const Auth = () => {
                   </div>
                   <span
                     className="auth-btn"
-                    onClick={submitOtp}
+                    onClick={phoneVerified ? {} : submitOtp}
                     style={
                       phoneVerified
                         ? { background: 'green', border: 'none' }
                         : {}
                     }
                   >
-                    {phoneVerified ? 'Verified' : 'Verify'}
+                    {phoneVerified ? 'verified' : 'verify'}
                   </span>
                 </>
               )}
