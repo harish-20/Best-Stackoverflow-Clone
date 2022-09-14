@@ -1,5 +1,35 @@
-.chatbot {
+.wrapper {
+  /* display: none; */
+  z-index: 200;
   position: fixed;
-  bottom: 5vw;
-  right: 5vw;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  background-color: rgba(0, 0, 0, 0.507);
+}
+.chatbot-container {
+  z-index: 300;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.chatbot-container img {
+  width: 40px;
+  height: 40px;
+  background-color: #009dff;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.closebtn {
+  color: white;
+  position: absolute;
+  top: -30px;
+  right: 30px;
+  text-decoration: underline;
 }
