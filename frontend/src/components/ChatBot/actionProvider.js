@@ -12,7 +12,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       headers: {
         'X-User-Agent': 'desktop',
         'X-Proxy-Location': 'EN',
-        'X-RapidAPI-Key': '6e166479c1msh6773e3eef756278p1c5b4bjsn1c599e62c29b',
+        'X-RapidAPI-Key': 'your key',
         'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
       },
     }
