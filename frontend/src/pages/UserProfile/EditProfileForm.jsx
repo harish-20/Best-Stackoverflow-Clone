@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux'
 import { updateProfile } from '../../actions/users'
 
 const EditProfileForm = ({ currentUser, setSwitch }) => {
-  const [name, setName] = useState(currentUser?.result.name)
-  const [about, setAbout] = useState(currentUser?.result.about)
+  const [name, setName] = useState(currentUser.result.name)
+  const [about, setAbout] = useState(currentUser.result.about)
   const [tags, setTags] = useState('')
   const [location, setLocation] = useState('')
 

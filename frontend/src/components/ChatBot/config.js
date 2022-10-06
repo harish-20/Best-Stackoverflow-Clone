@@ -5,7 +5,7 @@ const config = {
   initialMessages: [
     createChatBotMessage(
       `Hi there user. I am here to clear all your doubt.
-  what is your query('question', 'answer', 'login', 'signup' or 'password)`,
+  what is your query`,
     ),
   ],
 }

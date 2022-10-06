@@ -1,17 +1,48 @@
 import React from 'react'
-import { responses } from './responses'
+import axios from 'axios'
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
-  const addNewMessage = (userRequest) => {
-    const generateResponse =
-      responses[userRequest] ||
-      "Sorry i can' understand your request. What is your query('question', 'answer', 'login', 'signup' or 'password)"
+  const getAnswer = async (question) => {
+    const formattedQuestion = question.split(' ').join('+')
+    const options = {
+      method: 'GET',
+      url:
+        'https://google-search3.p.rapidapi.com/api/v1/search/q=' +
+        formattedQuestion,
+      headers: {
+        'X-User-Agent': 'desktop',
+        'X-Proxy-Location': 'EN',
+        'X-RapidAPI-Key': '6e166479c1msh6773e3eef756278p1c5b4bjsn1c599e62c29b',
+        'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
+      },
+    }
 
-    const newMessage = createChatBotMessage(generateResponse)
+    const response = await axios
+      .request(options)
+      .then(function (response) {
+        return response.data
+      })
+      .catch(function (error) {
+        console.error(error)
+      })
+
+    const getValidResult = (results) => {
+      const filteredList = results.filter((result) => result.description !== '')
+
+      return filteredList[0].description || "Sorry can't get your question"
+    }
+
+    const result = getValidResult(response.results)
+
+    const newMessage = createChatBotMessage(result)
     setState((prev) => ({
       prev,
       messages: [...prev.messages, newMessage],
     }))
+  }
+
+  const addNewMessage = (userRequest) => {
+    getAnswer(userRequest)
   }
 
   return (
