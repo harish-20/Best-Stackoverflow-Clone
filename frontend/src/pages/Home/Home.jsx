@@ -1,7 +1,8 @@
-import './Home.css'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import RightSidebar from '../../components/RightSidebar/RightSidebar'
 import HomeMainbar from '../../components/HomeMainbar/HomeMainbar'
+
+import './Home.css'
 
 const Home = () => {
   return (

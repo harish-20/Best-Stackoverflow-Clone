@@ -22,14 +22,18 @@ const Navbar = () => {
   }
 
   useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('Profile'))
     const token = user?.token
     if (token) {
       const decodedToken = decode(token)
-      if (decodedToken.exp * 1000 < new Date().getTime()) {
+      // 60 mins and 60 seconds
+      const HOUR = 60 * 60
+
+      dispatch(setCurrentUser(user))
+      if (decodedToken.exp * 3 * HOUR < new Date().getTime()) {
         handleLogout()
       }
     }
-    dispatch(setCurrentUser(JSON.parse(localStorage.getItem('Profile'))))
   }, [dispatch])
 
   return (

@@ -9,9 +9,6 @@ import { signup, login } from '../../actions/auth'
 import './Auth.css'
 import { sendOtp, verifyOtp } from '../../api'
 const Auth = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
   // user information
   const [isSignup, setIsSignUp] = useState(false)
   const [name, setName] = useState('')
@@ -23,6 +20,9 @@ const Auth = () => {
   const [otp, setOtp] = useState('')
   const [isPhoneNumberEntered, setIsPhoneNumberEntered] = useState(false)
   const [phoneVerified, setPhoneVerified] = useState(false)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const linkStyle = {
     color: '#007ac6',
@@ -79,7 +79,7 @@ const Auth = () => {
       {isSignup && <AboutAuth />}
       <div
         className="auth-container-2"
-        style={isSignup ? { paddingTop: '40px' } : {}}
+        style={isSignup ? { paddingTop: '50px' } : {}}
       >
         {!isSignup && (
           <img className="auth-icon" src={icon} alt="stackoverflow" />

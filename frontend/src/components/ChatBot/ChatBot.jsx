@@ -17,7 +17,8 @@ const ChatBot = () => {
     setIsChatbotOn((prev) => !prev)
   }
   return (
-    <div className={isChatbotOn ? 'wrapper' : ''}>
+    <div>
+      {isChatbotOn && <div className="wrapper" onClick={hideChatbot}></div>}
       <div className="chatbot-container">
         {isChatbotOn ? (
           <>
@@ -31,11 +32,7 @@ const ChatBot = () => {
             />
           </>
         ) : (
-          <img
-            src="https://www.zeroshotbot.com/user/themes/bootstrap4/images/root/square-plus-pattern.png"
-            alt="chatboticon"
-            onClick={hideChatbot}
-          />
+          <img src={chatboticon} alt="chatboticon" onClick={hideChatbot} />
         )}
       </div>
     </div>
