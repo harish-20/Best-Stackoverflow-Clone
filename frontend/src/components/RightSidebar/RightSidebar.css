@@ -5,7 +5,7 @@
 }
 .right-sidebar p {
   font-size: 13px;
-  line-height: 15px;
+  line-height: 14px;
   font-weight: 500;
 }
 
@@ -22,8 +22,8 @@
 }
 .right-sidebar-div-1 {
   background-color: #fdf7e2;
-  padding: 14px 10px;
   border: solid 1px #f1e5bc;
+  padding: 14px 10px 0px 10px;
 }
 .right-sidebar-div-1 .right-sidebar-div-2 {
   display: flex;
@@ -37,7 +37,7 @@
 }
 
 .widget-tags {
-  margin-top: 30px;
+  margin-top: 10px;
   box-shadow: 3px 3px 10px rgb(0 0 0 / 5%), -3px -3px 10px rgb(0 0 0 / 5%);
 }
 .widget-tags h3 {

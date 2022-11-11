@@ -64,7 +64,7 @@ const Tags = () => {
   return (
     <div
       className="home-container-1"
-      style={{ marginTop: '40px', minHeight: '100vh' }}
+      style={{ marginTop: '40px', minHeight: '90vh' }}
     >
       <LeftSidebar />
       <div className="tag-container">

@@ -1,7 +1,6 @@
 .left-sidebar {
-  height: auto;
   width: 164px;
-  box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.2);
+  box-shadow: 1px 0px 0 rgb(0, 0, 0, 0.2);
   transition: box-shadow ease-in-out 0.1s, transform ease-in-out 0.1s;
   transform: translateZ(0);
   box-sizing: border-box;
@@ -16,7 +15,7 @@
   position: -webkit-sticky;
   top: 45px;
   margin: 0px 0px;
-  padding: 20px 0px;
+  padding: 20px 0 0 0;
 }
 
 .side-nav-div {

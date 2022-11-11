@@ -8,7 +8,7 @@ import '../Home/Home.css'
 const Users = () => {
   const location = useLocation()
   return (
-    <div className="home-container-1" style={{ minHeight: '100vh' }}>
+    <div className="home-container-1" style={{ minHeight: '90vh' }}>
       <LeftSidebar />
       <div
         className="home-container-2"

@@ -74,7 +74,7 @@ nav .navbar form input {
 
 .nav-links {
   padding: 7px 13px;
-  border: solid 1px blue;
+  border: solid 1px rgb(33, 33, 255);
   border-radius: 3px;
   background: #e7f8fe;
   cursor: pointer;

@@ -45,7 +45,7 @@ const UserProfile = () => {
   return (
     <div
       className="home-container-1"
-      style={{ marginTop: '40px', minHeight: '100vh' }}
+      style={{ marginTop: '20px', minHeight: '90vh' }}
     >
       <LeftSidebar />
       <div className="home-container-2">

@@ -78,8 +78,8 @@ const Navbar = () => {
               <Avatar
                 color={'white'}
                 backgroundColor="#009dff"
-                px="12px"
-                py="7px"
+                px="13px"
+                py="10px"
                 borderRadius="50%"
               >
                 {user?.result?.name.toUpperCase().charAt(0)}

@@ -11,6 +11,7 @@ const Avatar = ({
   cursor,
 }) => {
   const style = {
+    marginRight: '10px',
     backgroundColor,
     padding: `${py} ${px}`,
     color: color || 'black',
