@@ -1,16 +1,12 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
 
-import { updateProfile } from '../../actions/users'
-
-const EditProfileForm = ({ currentUser, setSwitch }) => {
+const EditProfileForm = ({ currentUser, setSwitch, updateUser }) => {
+  console.log(currentUser)
   const [name, setName] = useState(currentUser.result.name)
   const [about, setAbout] = useState(currentUser.result.about)
-  const [tags, setTags] = useState('')
-  const [location, setLocation] = useState('')
-
-  const dispatch = useDispatch()
+  const [tags, setTags] = useState(currentUser.result.tags.join(' '))
+  const [location, setLocation] = useState(currentUser.result.location)
 
   const getCity = async (latitude, longitude) => {
     const apiEndPoint = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude.toFixed(
@@ -38,20 +34,7 @@ const EditProfileForm = ({ currentUser, setSwitch }) => {
 
     const id = currentUser.result._id
 
-    if (tags.length === 0) {
-      dispatch(
-        updateProfile(id, {
-          name,
-          about,
-          location,
-          tags: currentUser?.result?.tags,
-        }),
-      )
-    } else {
-      dispatch(
-        updateProfile(id, { name, about, location, tags: tags.split(' ') }),
-      )
-    }
+    updateUser(id, name, about, location, tags)
     setSwitch(false)
   }
   return (

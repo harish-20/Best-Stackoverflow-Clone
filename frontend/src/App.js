@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { BrowserRouter as Router } from 'react-router-dom'
 
@@ -11,16 +10,15 @@ import ChatBot from './components/Chatbot/ChatBot'
 
 function App() {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchAllQuestions())
-    dispatch(fetchAllUsers())
-  }, [dispatch])
+
+  dispatch(fetchAllQuestions())
+  dispatch(fetchAllUsers())
 
   return (
     <Router>
-      <ChatBot />
       <Navbar />
       <AllRoutes />
+      <ChatBot />
     </Router>
   )
 }

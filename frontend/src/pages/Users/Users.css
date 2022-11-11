@@ -16,9 +16,11 @@
 }
 
 .user-profile-link h3 {
-  padding: 10px 14px;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 7px;
   text-align: center;
-  /* vertical-align: center; */
+  vertical-align: center;
   background-color: #d3d3d3;
-  border-radius: 50%;
+  border-radius: 7px;
 }

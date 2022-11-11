@@ -1,4 +1,4 @@
-const UsersReducer = (state = [], action) => {
+const usersReducer = (state = [], action) => {
   switch (action.type) {
     case 'FETCH_USERS':
       if (action.payload) return [...action.payload]
@@ -8,10 +8,11 @@ const UsersReducer = (state = [], action) => {
       const newList = state.map((ele) =>
         ele._id === action.payload.id ? action.payload : ele,
       )
-      return [...state, ...newList]
+      let newState = [...state, ...newList]
+      return newState
     default:
       return state
   }
 }
 
-export default UsersReducer
+export default usersReducer

@@ -16,7 +16,6 @@ const HomeMainbar = () => {
   // hooks fuctions
   useEffect(() => {
     dispatch(fetchAllQuestions())
-    setTimeout(() => {}, 6000)
   }, [dispatch])
 
   // state variables

@@ -3,20 +3,19 @@ import axios from 'axios'
 
 const ActionProvider = ({ createChatBotMessage, setState, children }) => {
   const getAnswer = async (question) => {
-    const formattedQuestion = question.split(' ').join('+')
     const options = {
       method: 'GET',
-      url:
-        'https://google-search3.p.rapidapi.com/api/v1/search/q=' +
-        formattedQuestion,
+      url: 'https://g-search.p.rapidapi.com/search',
+      params: {
+        q: question,
+        location_name: 'London,Ontario,Canada',
+        location_parameters_auto: 'true',
+      },
       headers: {
-        'X-User-Agent': 'desktop',
-        'X-Proxy-Location': 'EN',
-        'X-RapidAPI-Key': 'your key',
-        'X-RapidAPI-Host': 'google-search3.p.rapidapi.com',
+        'X-RapidAPI-Key': '',
+        'X-RapidAPI-Host': 'g-search.p.rapidapi.com',
       },
     }
-
     const response = await axios
       .request(options)
       .then(function (response) {
@@ -25,15 +24,9 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
       .catch(function (error) {
         console.error(error)
       })
+    console.log(response)
 
-    const getValidResult = (results) => {
-      const filteredList = results.filter((result) => result.description !== '')
-
-      return filteredList[0].description || "Sorry can't get your question"
-    }
-
-    const result = getValidResult(response.results)
-
+    const result = response.data.knowledge_graph.description || 'Not Found'
     const newMessage = createChatBotMessage(result)
     setState((prev) => ({
       prev,

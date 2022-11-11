@@ -2,27 +2,46 @@ import moment from 'moment'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
+import { useDispatch } from 'react-redux'
 
 import Avatar from '../../components/Avatar/Avatar'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import EditProfileForm from './EditProfileForm'
 import ProfileBio from './ProfileBio'
+import { updateProfile } from '../../actions/users'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
 
 import '../Home/Home.css'
 import './UserProfile.css'
 
 const UserProfile = () => {
-  const currentUser = useSelector((state) => state.currentUserReducer)
+  const [Switch, setSwitch] = useState(false)
 
+  const currentUser = useSelector((state) => state.currentUserReducer)
   const users = useSelector((state) => state.usersReducer)
+
+  const dispatch = useDispatch()
+
   const { id } = useParams()
   const [currentProfile] = users?.filter((user) => user?._id === id)
 
-  const [Switch, setSwitch] = useState(false)
-
+  const updateUser = (id, name, about, location, tags) => {
+    if (tags.length === 0) {
+      dispatch(
+        updateProfile(id, {
+          name,
+          about,
+          location,
+        }),
+      )
+    } else {
+      dispatch(
+        updateProfile(id, { name, about, location, tags: tags.split(' ') }),
+      )
+    }
+  }
   return (
     <div
       className="home-container-1"
@@ -66,6 +85,7 @@ const UserProfile = () => {
               <EditProfileForm
                 currentUser={currentUser}
                 setSwitch={setSwitch}
+                updateUser={updateUser}
               />
             ) : (
               <ProfileBio currentProfile={currentProfile} />
