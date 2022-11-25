@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useState } from 'react'
 
 const EditProfileForm = ({ currentUser, setSwitch, updateUser }) => {
-  console.log(currentUser)
   const [name, setName] = useState(currentUser.result.name)
   const [about, setAbout] = useState(currentUser.result.about)
   const [tags, setTags] = useState(currentUser.result.tags.join(' '))

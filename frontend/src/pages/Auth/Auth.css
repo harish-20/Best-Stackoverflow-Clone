@@ -94,3 +94,12 @@
   border: solid 1px #0000003e;
   border-radius: 3px;
 }
+
+input:disabled {
+  border: 2px solid gray;
+  cursor: not-allowed;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}

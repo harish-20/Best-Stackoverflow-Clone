@@ -8,7 +8,7 @@ import Avatar from '../../components/Avatar/Avatar'
 import LeftSidebar from '../../components/LeftSidebar/LeftSidebar'
 import EditProfileForm from './EditProfileForm'
 import ProfileBio from './ProfileBio'
-import { updateProfile } from '../../actions/users'
+import { fetchAllUsers, updateProfile } from '../../actions/users'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBirthdayCake, faPen } from '@fortawesome/free-solid-svg-icons'
@@ -41,6 +41,7 @@ const UserProfile = () => {
         updateProfile(id, { name, about, location, tags: tags.split(' ') }),
       )
     }
+    dispatch(fetchAllUsers())
   }
   return (
     <div

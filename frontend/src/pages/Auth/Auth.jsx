@@ -28,22 +28,27 @@ const Auth = () => {
     color: '#007ac6',
   }
 
+  const getOtp = async () => {
+    if (isPhoneNumberEntered) {
+      return
+    }
+    const trimedNumber = phoneNumber.split(' ').join('')
+    setIsPhoneNumberEntered(true)
+    await sendOtp(trimedNumber)
+  }
+
   const submitOtp = async () => {
+    if (phoneVerified) {
+      return
+    }
     const trimedNumber = phoneNumber.split(' ').join('')
     const { data: isVerified } = await verifyOtp(trimedNumber, otp)
 
     if (isVerified === true) {
-      alert('phone number verified')
       setPhoneVerified(true)
     } else {
       alert('invalid otp please check it')
     }
-  }
-
-  const getOtp = async () => {
-    const trimedNumber = phoneNumber.split(' ').join('')
-    setIsPhoneNumberEntered(true)
-    await sendOtp(trimedNumber)
   }
 
   const handleSubmit = (e) => {
@@ -102,14 +107,24 @@ const Auth = () => {
                 <input
                   type="text"
                   name="phonenumber"
-                  id="phonenumber"
                   value={phoneNumber}
+                  disabled={isPhoneNumberEntered}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                 />
               </label>
-              <span className="auth-btn" onClick={getOtp}>
-                send otp
-              </span>
+              <button
+                type="button"
+                className="auth-btn"
+                disabled={isPhoneNumberEntered}
+                onClick={getOtp}
+                style={
+                  isPhoneNumberEntered
+                    ? { background: 'green', border: 'none' }
+                    : {}
+                }
+              >
+                {isPhoneNumberEntered ? 'OTP Sent successfully !' : 'Send OTP'}
+              </button>
               {isPhoneNumberEntered && (
                 <>
                   <div htmlFor="phonenumber">
@@ -120,20 +135,23 @@ const Auth = () => {
                       name="otp"
                       id="otp"
                       value={otp}
+                      disabled={phoneVerified}
                       onChange={(e) => setOtp(e.target.value)}
                     />
                   </div>
-                  <span
+                  <button
+                    type="button"
                     className="auth-btn"
-                    onClick={phoneVerified ? {} : submitOtp}
+                    disabled={phoneVerified}
+                    onClick={submitOtp}
                     style={
                       phoneVerified
                         ? { background: 'green', border: 'none' }
                         : {}
                     }
                   >
-                    {phoneVerified ? 'verified' : 'verify'}
-                  </span>
+                    {phoneVerified ? 'verified !' : 'verify'}
+                  </button>
                 </>
               )}
             </>

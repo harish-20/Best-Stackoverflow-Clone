@@ -1,14 +1,15 @@
-import Avatar from '../Avatar/Avatar'
 import decode from 'jwt-decode'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
 
 import logo from '../../assets/logo.png'
 import search from '../../assets/search.svg'
+
+import Avatar from '../Avatar/Avatar'
 import { setCurrentUser } from '../../actions/currentUser'
 
 import './Navbar.css'
+import { useEffect } from 'react'
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -17,24 +18,36 @@ const Navbar = () => {
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' })
-    navigate('/')
     dispatch(setCurrentUser(null))
+
+    navigate('/')
   }
 
-  useEffect(() => {
+  const checkForExpiredUser = () => {
     const user = JSON.parse(localStorage.getItem('Profile'))
-    const token = user?.token
+    let token
+
+    if (user) {
+      token = user.token
+    } else {
+      handleLogout()
+    }
+
     if (token) {
       const decodedToken = decode(token)
       // 60 mins and 60 seconds
-      const HOUR = 60 * 60
+      const HOUR_IN_SECONDS = 60 * 60
 
       dispatch(setCurrentUser(user))
-      if (decodedToken.exp * 3 * HOUR < new Date().getTime()) {
+      if (decodedToken.exp * 3 * HOUR_IN_SECONDS < new Date().getTime()) {
         handleLogout()
       }
     }
-  }, [dispatch])
+  }
+
+  useEffect(() => {
+    checkForExpiredUser()
+  }, [])
 
   return (
     <nav className="main-nav">
