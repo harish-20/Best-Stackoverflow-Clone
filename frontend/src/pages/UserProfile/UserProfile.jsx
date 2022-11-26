@@ -25,7 +25,7 @@ const UserProfile = () => {
   const dispatch = useDispatch()
 
   const { id } = useParams()
-  const [currentProfile] = users?.filter((user) => user?._id === id)
+  const [currentProfile] = users.filter((user) => user._id === id)
 
   const updateUser = (id, name, about, location, tags) => {
     if (tags.length === 0) {
@@ -84,7 +84,7 @@ const UserProfile = () => {
           <>
             {Switch ? (
               <EditProfileForm
-                currentUser={currentUser}
+                currentProfile={currentProfile}
                 setSwitch={setSwitch}
                 updateUser={updateUser}
               />

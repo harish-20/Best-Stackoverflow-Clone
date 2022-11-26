@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-const EditProfileForm = ({ currentUser, setSwitch, updateUser }) => {
-  const [name, setName] = useState(currentUser.result.name)
-  const [about, setAbout] = useState(currentUser.result.about)
-  const [tags, setTags] = useState(currentUser.result.tags.join(' '))
-  const [location, setLocation] = useState(currentUser.result.location)
+const EditProfileForm = ({ currentProfile, setSwitch, updateUser }) => {
+  const [name, setName] = useState(currentProfile.name)
+  const [about, setAbout] = useState(currentProfile.about)
+  const [tags, setTags] = useState(currentProfile.tags.join(' '))
+  const [location, setLocation] = useState(currentProfile.location)
 
   const getCity = async (latitude, longitude) => {
     const apiEndPoint = `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude.toFixed(
@@ -30,8 +30,7 @@ const EditProfileForm = ({ currentUser, setSwitch, updateUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
-    const id = currentUser.result._id
+    const id = currentProfile._id
 
     updateUser(id, name, about, location, tags)
     setSwitch(false)
