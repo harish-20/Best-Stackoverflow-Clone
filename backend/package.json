@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "This server is done to serve data(as an api) to stackoverflow clone app",
   "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "type": "module",
   "scripts": {
     "start": "nodemon index.js"

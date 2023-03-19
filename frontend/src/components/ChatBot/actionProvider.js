@@ -12,7 +12,7 @@ const ActionProvider = ({ createChatBotMessage, setState, children }) => {
         location_parameters_auto: 'true',
       },
       headers: {
-        'X-RapidAPI-Key': '',
+        'X-RapidAPI-Key': '6e166479c1msh6773e3eef756278p1c5b4bjsn1c599e62c29b',
         'X-RapidAPI-Host': 'g-search.p.rapidapi.com',
       },
     }
