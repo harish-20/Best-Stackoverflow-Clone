@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'https://stackoverflow-harish.herokuapp.com/', //http://localhost:8080/
+  baseURL: 'http://localhost:8080/', //http://localhost:8080/
 })
 
 API.interceptors.request.use(
