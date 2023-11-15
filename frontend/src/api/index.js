@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const API = axios.create({
-  baseURL: 'http://localhost:8080/', //http://localhost:8080/
+  baseURL: 'https://stackoverflowclone-harish.onrender.com/', //http://localhost:8080/
 })
 
 API.interceptors.request.use(
