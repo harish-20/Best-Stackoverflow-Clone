@@ -4,7 +4,7 @@ Welcome to the StackOverflow clone where developers can ask questions about thei
 
 ## Live Link
 
-[StackOverflow Clone]([https://your-live-link.com](https://stackoverflow-clone-harish.netlify.app/))
+[StackOverflow Clone](https://stackoverflow-clone-harish.netlify.app/)
 
 ## How to Use
 
